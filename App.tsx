@@ -1,13 +1,19 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
-import BottomTabs from "./src/navigation/BottomTabs";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { WalletProvider } from "./src/context/WalletProvider";
+import RootNavigator from "./src/navigation/RootNavigator";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar style="auto" />
-      <BottomTabs />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <WalletProvider>
+        <NavigationContainer>
+          <StatusBar style="auto" />
+          <RootNavigator />
+        </NavigationContainer>
+      </WalletProvider>
+    </SafeAreaProvider>
   );
 }

@@ -1,23 +1,62 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { useMemo } from "react";
+import { View, StyleSheet, FlatList, RefreshControl } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import BalanceSummary from "../components/BalanceSummary";
+import Section from "../components/Section";
+import OpportunityItem from "../components/OpportunityItem";
+import EmptyState from "../components/EmptyState";
+import { useWallet } from "../context/WalletProvider";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../navigation/RootNavigator";
+
+type Nav = NativeStackNavigationProp<RootStackParamList>;
 
 export default function HomeScreen() {
+  const navigation = useNavigation<Nav>();
+  const { opportunities, loadingOpportunities, refreshAll } = useWallet();
+  const data = useMemo(() => opportunities, [opportunities]);
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Home</Text>
-    </View>
+    <SafeAreaView style={styles.safe}>
+      <FlatList
+        contentContainerStyle={styles.content}
+        data={data}
+        keyExtractor={(item) => item.id}
+        ListHeaderComponent={
+          <View>
+            <BalanceSummary />
+            <Section title="Investment Opportunities">
+              <View />
+            </Section>
+          </View>
+        }
+        ListEmptyComponent={
+          !loadingOpportunities ? (
+            <EmptyState text="No opportunities available" />
+          ) : null
+        }
+        renderItem={({ item }) => (
+          <OpportunityItem
+            item={item}
+            onPress={() =>
+              navigation.navigate("OpportunityDetails", { opportunity: item })
+            }
+          />
+        )}
+        ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+        refreshControl={
+          <RefreshControl
+            refreshing={loadingOpportunities}
+            onRefresh={refreshAll}
+          />
+        }
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "600",
-  },
+  safe: { flex: 1, backgroundColor: "#fff" },
+  content: { padding: 16, gap: 12 },
 });
