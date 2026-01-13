@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Pressable, Alert } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
@@ -15,7 +15,6 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
   const { balances, investInOpportunity } = useWallet();
   const [submitting, setSubmitting] = useState(false);
   const available = balances?.available ?? 0;
-  const canInvest = useMemo(() => available >= 1000, [available]);
 
   const onInvest = async () => {
     if (submitting) return;
@@ -63,11 +62,11 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
           </Text>
         </View>
         <Pressable
-          disabled={!canInvest || submitting}
+          disabled={submitting}
           onPress={onInvest}
           style={({ pressed }) => [
             styles.button,
-            (!canInvest || submitting) && styles.buttonDisabled,
+            submitting && styles.buttonDisabled,
             pressed && styles.buttonPressed,
           ]}
         >
