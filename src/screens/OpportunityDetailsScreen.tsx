@@ -88,8 +88,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.surface,
-    ...shadow,
+    backgroundColor: "transparent",
   },
   backBtn: { position: "absolute", left: spacing.sm, padding: spacing.xs },
   headerTitle: {
