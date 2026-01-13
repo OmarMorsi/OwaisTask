@@ -6,6 +6,7 @@ import EmptyState from "../components/EmptyState";
 import TransactionItem from "../components/TransactionItem";
 import Section from "../components/Section";
 import { useWallet } from "../context/WalletProvider";
+import { colors, spacing } from "../theme/tokens";
 
 export default function WalletScreen() {
   const { transactions, loadingTransactions, refreshAll } = useWallet();
@@ -30,7 +31,7 @@ export default function WalletScreen() {
           ) : null
         }
         renderItem={({ item }) => <TransactionItem item={item} />}
-        ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+        ItemSeparatorComponent={() => <View style={{ height: spacing.md }} />}
         refreshControl={
           <RefreshControl
             refreshing={loadingTransactions}
@@ -43,6 +44,6 @@ export default function WalletScreen() {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: "#fff" },
-  content: { padding: 16, gap: 12 },
+  safe: { flex: 1, backgroundColor: colors.bg },
+  content: { padding: spacing.lg, gap: spacing.md },
 });

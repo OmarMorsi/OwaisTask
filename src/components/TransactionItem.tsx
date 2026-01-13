@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { colors, radii, shadow, spacing, typography } from "../theme/tokens";
 import { Transaction } from "../types";
 import { formatCurrencySAR, formatDateHuman } from "../utils/format";
 
@@ -21,9 +22,10 @@ export default function TransactionItem({ item }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#eee",
+    padding: spacing.md,
+    borderRadius: radii.sm,
+    backgroundColor: colors.surface,
+    ...shadow,
   },
   row: {
     flexDirection: "row",
@@ -31,18 +33,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   type: {
-    fontSize: 14,
-    fontWeight: "600",
-    color: "#000",
+    fontSize: typography.body,
+    fontWeight: "700",
+    color: colors.text,
   },
   amount: {
-    fontSize: 14,
-    fontWeight: "700",
-    color: "#000",
+    fontSize: typography.body,
+    fontWeight: "800",
+    color: colors.text,
   },
   date: {
-    marginTop: 4,
-    fontSize: 12,
-    color: "#666",
+    marginTop: spacing.xs,
+    fontSize: typography.label,
+    color: colors.textMuted,
   },
 });

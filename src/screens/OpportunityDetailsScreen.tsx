@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "../navigation/RootNavigator";
+import { colors, radii, shadow, spacing, typography } from "../theme/tokens";
 import { formatCurrencySAR } from "../utils/format";
 import { useWallet } from "../context/WalletProvider";
 
@@ -45,17 +46,17 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
       <View style={styles.container}>
         <Text style={styles.name}>{opportunity.name}</Text>
         <Text style={styles.desc}>{opportunity.description}</Text>
-        <View style={styles.row}>
+        <View style={styles.cardRow}>
           <Text style={styles.label}>Expected return</Text>
           <Text style={styles.value}>{`${opportunity.expectedReturn}%`}</Text>
         </View>
-        <View style={styles.row}>
+        <View style={styles.cardRow}>
           <Text style={styles.label}>Duration</Text>
           <Text
             style={styles.value}
           >{`${opportunity.durationMonths} months`}</Text>
         </View>
-        <View style={styles.row}>
+        <View style={styles.cardRow}>
           <Text style={styles.label}>Minimum investment</Text>
           <Text style={styles.value}>
             {formatCurrencySAR(opportunity.minInvestment)}
@@ -81,37 +82,53 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: "#fff" },
+  safe: { flex: 1, backgroundColor: colors.bg },
   header: {
-    height: 52,
+    height: 56,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: colors.surface,
+    ...shadow,
   },
-  backBtn: { position: "absolute", left: 8, padding: 6 },
-  headerTitle: { fontSize: 16, fontWeight: "700", color: "#000" },
-  headerRight: { position: "absolute", right: 8, width: 32 },
-  container: { flex: 1, padding: 16, gap: 12 },
-  name: { fontSize: 20, fontWeight: "700", color: "#000" },
-  desc: { fontSize: 14, color: "#333" },
-  row: {
+  backBtn: { position: "absolute", left: spacing.sm, padding: spacing.xs },
+  headerTitle: {
+    fontSize: typography.title,
+    fontWeight: "700",
+    color: colors.text,
+  },
+  headerRight: { position: "absolute", right: spacing.sm, width: 32 },
+  container: { flex: 1, padding: spacing.lg, gap: spacing.md },
+  name: { fontSize: typography.titleLg, fontWeight: "700", color: colors.text },
+  desc: { fontSize: typography.body, color: colors.textMuted },
+  cardRow: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: "#eee",
+    paddingVertical: spacing.md,
+    paddingHorizontal: spacing.md,
+    borderRadius: radii.md,
+    backgroundColor: colors.surface,
+    ...shadow,
   },
-  label: { fontSize: 14, color: "#666" },
-  value: { fontSize: 14, color: "#000", fontWeight: "600" },
+  label: { fontSize: typography.body, color: colors.textMuted },
+  value: { fontSize: typography.body, color: colors.text, fontWeight: "700" },
   button: {
-    marginTop: 16,
-    backgroundColor: "#000",
-    paddingVertical: 14,
-    borderRadius: 10,
+    marginTop: spacing.lg,
+    backgroundColor: colors.primary,
+    paddingVertical: spacing.md + 2,
+    borderRadius: radii.md,
     alignItems: "center",
   },
-  buttonDisabled: { backgroundColor: "#999" },
+  buttonDisabled: { backgroundColor: colors.primaryMuted },
   buttonPressed: { opacity: 0.85 },
-  buttonText: { color: "#fff", fontSize: 16, fontWeight: "700" },
-  available: { marginTop: 8, fontSize: 12, color: "#666" },
+  buttonText: {
+    color: "#fff",
+    fontSize: typography.bodyStrong,
+    fontWeight: "700",
+  },
+  available: {
+    marginTop: spacing.sm,
+    fontSize: typography.label,
+    color: colors.textMuted,
+  },
 });

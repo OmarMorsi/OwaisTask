@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { colors, spacing, typography } from "../theme/tokens";
 
 type Props = {
   title: string;
@@ -17,14 +18,15 @@ export default function Section({ title, children }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 16,
+    marginTop: spacing.lg,
   },
   title: {
-    fontSize: 16,
+    fontSize: typography.title,
     fontWeight: "700",
-    marginBottom: 8,
+    marginBottom: spacing.sm,
+    color: colors.text,
   },
   content: {
-    gap: 12,
+    gap: spacing.md,
   },
 });

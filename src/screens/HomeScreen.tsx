@@ -9,6 +9,7 @@ import { useWallet } from "../context/WalletProvider";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/RootNavigator";
+import { colors, spacing } from "../theme/tokens";
 
 type Nav = NativeStackNavigationProp<RootStackParamList>;
 
@@ -44,7 +45,7 @@ export default function HomeScreen() {
             }
           />
         )}
-        ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+        ItemSeparatorComponent={() => <View style={{ height: spacing.md }} />}
         refreshControl={
           <RefreshControl
             refreshing={loadingOpportunities}
@@ -57,6 +58,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  safe: { flex: 1, backgroundColor: "#fff" },
-  content: { padding: 16, gap: 12 },
+  safe: { flex: 1, backgroundColor: colors.bg },
+  content: { padding: spacing.lg, gap: spacing.md },
 });

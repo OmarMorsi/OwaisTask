@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { colors, radii, shadow, spacing, typography } from "../theme/tokens";
 import { useWallet } from "../context/WalletProvider";
 import { formatCurrencySAR } from "../utils/format";
 
@@ -31,43 +32,45 @@ export default function BalanceSummary() {
 
 const styles = StyleSheet.create({
   container: {
-    gap: 12,
-    padding: 16,
-    backgroundColor: "#fff",
+    gap: spacing.md,
+    padding: spacing.lg,
+    backgroundColor: colors.bg,
   },
   row: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    gap: 12,
+    justifyContent: "space-between",
+    alignItems: "stretch",
+    gap: spacing.md,
   },
   card: {
     flex: 1,
-    padding: 16,
-    borderRadius: 12,
-    backgroundColor: "#f5f5f5",
+    padding: spacing.lg,
+    borderRadius: radii.md,
+    backgroundColor: colors.surface,
+    ...shadow,
   },
   cardCentered: {
     flex: 1,
-    padding: 16,
-    borderRadius: 12,
-    backgroundColor: "#f5f5f5",
+    padding: spacing.lg,
+    borderRadius: radii.md,
+    backgroundColor: colors.surface,
     alignItems: "center",
+    ...shadow,
   },
   label: {
-    fontSize: 12,
-    color: "#666",
+    fontSize: typography.label,
+    color: colors.textMuted,
   },
   value: {
-    marginTop: 6,
-    fontSize: 16,
+    marginTop: spacing.xs,
+    fontSize: typography.bodyStrong,
     fontWeight: "700",
-    color: "#000",
+    color: colors.text,
   },
   totalValue: {
-    marginTop: 6,
-    fontSize: 18,
+    marginTop: spacing.xs,
+    fontSize: typography.title,
     fontWeight: "800",
-    color: "#000",
+    color: colors.text,
   },
 });

@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { colors, radii, shadow, spacing, typography } from "../theme/tokens";
 import { Opportunity } from "../types";
 import { formatCurrencySAR } from "../utils/format";
 
@@ -16,6 +18,11 @@ export default function OpportunityItem({ item, onPress }: Props) {
     >
       <View style={styles.row}>
         <Text style={styles.name}>{item.name}</Text>
+        <MaterialCommunityIcons
+          name="chevron-right"
+          size={22}
+          color={colors.textMuted}
+        />
       </View>
       <Text style={styles.meta}>{`${item.expectedReturn}% • ${
         item.durationMonths
@@ -26,12 +33,11 @@ export default function OpportunityItem({ item, onPress }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
-    borderRadius: 12,
-    backgroundColor: "#fff",
-    borderWidth: 1,
-    borderColor: "#eee",
-    gap: 6,
+    padding: spacing.lg,
+    borderRadius: radii.md,
+    backgroundColor: colors.surface,
+    gap: spacing.xs,
+    ...shadow,
   },
   pressed: {
     opacity: 0.7,
@@ -42,12 +48,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   name: {
-    fontSize: 16,
+    fontSize: typography.bodyStrong,
     fontWeight: "600",
-    color: "#000",
+    color: colors.text,
   },
   meta: {
-    fontSize: 13,
-    color: "#444",
+    fontSize: typography.body,
+    color: colors.textMuted,
   },
 });

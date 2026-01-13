@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { colors, spacing, typography } from "../theme/tokens";
 
 type Props = {
   text: string;
@@ -15,12 +16,12 @@ export default function EmptyState({ text }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 24,
+    paddingVertical: spacing.xl,
     alignItems: "center",
     justifyContent: "center",
   },
   text: {
-    fontSize: 14,
-    color: "#666",
+    fontSize: typography.body,
+    color: colors.textMuted,
   },
 });

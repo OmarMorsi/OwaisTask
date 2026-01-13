@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
 import WalletScreen from "../screens/WalletScreen";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { colors } from "../theme/tokens";
 
 export type RootTabParamList = {
   Home: undefined;
@@ -19,6 +20,13 @@ export default function BottomTabs() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: "black",
         tabBarInactiveTintColor: "black",
+        tabBarStyle: {
+          backgroundColor: colors.surface,
+          borderTopWidth: 0,
+          height: 60,
+          paddingBottom: 6,
+          paddingTop: 6,
+        },
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: string = "home-outline";
 
