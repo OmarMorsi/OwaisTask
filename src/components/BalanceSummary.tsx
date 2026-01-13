@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   totalValue: {
     marginTop: spacing.xs,
-    fontSize: typography.title,
+    fontSize: typography.body,
     fontWeight: "800",
     color: colors.text,
   },
