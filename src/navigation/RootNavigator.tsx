@@ -23,7 +23,7 @@ export default function RootNavigator() {
       <Stack.Screen
         name="OpportunityDetails"
         component={OpportunityDetailsScreen}
-        options={{ title: "Details" }}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

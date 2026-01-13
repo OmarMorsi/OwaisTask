@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { View, Text, StyleSheet, Pressable, Alert } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RootStackParamList } from "../navigation/RootNavigator";
@@ -30,6 +31,17 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.safe}>
+      <View style={styles.header}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={styles.backBtn}
+          hitSlop={8}
+        >
+          <MaterialCommunityIcons name="chevron-left" size={28} color="#000" />
+        </Pressable>
+        <Text style={styles.headerTitle}>Details</Text>
+        <View style={styles.headerRight} />
+      </View>
       <View style={styles.container}>
         <Text style={styles.name}>{opportunity.name}</Text>
         <Text style={styles.desc}>{opportunity.description}</Text>
@@ -70,6 +82,15 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
 
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: "#fff" },
+  header: {
+    height: 52,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  backBtn: { position: "absolute", left: 8, padding: 6 },
+  headerTitle: { fontSize: 16, fontWeight: "700", color: "#000" },
+  headerRight: { position: "absolute", right: 8, width: 32 },
   container: { flex: 1, padding: 16, gap: 12 },
   name: { fontSize: 20, fontWeight: "700", color: "#000" },
   desc: { fontSize: 14, color: "#333" },
