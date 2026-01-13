@@ -6,7 +6,6 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { Alert } from "react-native";
 import { Balances, Opportunity, Transaction } from "../types";
 import {
   fetchBalances,

@@ -42,13 +42,6 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
     gap: spacing.md,
   },
-  card: {
-    flex: 1,
-    padding: spacing.lg,
-    borderRadius: radii.md,
-    backgroundColor: colors.surface,
-    ...shadow,
-  },
   cardCentered: {
     flex: 1,
     padding: spacing.lg,

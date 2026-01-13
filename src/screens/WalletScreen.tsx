@@ -20,9 +20,7 @@ export default function WalletScreen() {
         ListHeaderComponent={
           <View>
             <BalanceSummary />
-            <Section title="Transactions">
-              <View />
-            </Section>
+            <Section title="Transactions" />
           </View>
         }
         ListEmptyComponent={

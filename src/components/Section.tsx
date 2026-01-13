@@ -4,14 +4,14 @@ import { colors, spacing, typography } from "../theme/tokens";
 
 type Props = {
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export default function Section({ title, children }: Props) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
-      <View style={styles.content}>{children}</View>
+      {children ? <View style={styles.content}>{children}</View> : null}
     </View>
   );
 }

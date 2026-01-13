@@ -27,9 +27,7 @@ export default function HomeScreen() {
         ListHeaderComponent={
           <View>
             <BalanceSummary />
-            <Section title="Investment Opportunities">
-              <View />
-            </Section>
+            <Section title="Investment Opportunities" />
           </View>
         }
         ListEmptyComponent={
