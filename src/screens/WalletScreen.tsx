@@ -19,7 +19,7 @@ export default function WalletScreen() {
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
           <View>
-            <Text style={styles.screenTitle}>Owais</Text>
+            <Text style={styles.screenTitle}>OWAIS</Text>
 
             <View style={styles.heroCard}>
               <View style={styles.heroAccentOne} />

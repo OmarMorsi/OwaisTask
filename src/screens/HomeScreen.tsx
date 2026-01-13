@@ -33,23 +33,7 @@ export default function HomeScreen() {
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
           <View>
-            <Pressable
-              style={({ pressed }) => [
-                styles.titleTouch,
-                pressed && { opacity: 0.7 },
-              ]}
-              onPress={() => {
-                const nav: any = navigation;
-                if (nav?.getParent?.()) {
-                  nav.getParent().navigate("Home");
-                } else {
-                  nav.navigate("Home");
-                }
-              }}
-              hitSlop={8}
-            >
-              <Text style={styles.screenTitle}>Owais</Text>
-            </Pressable>
+            <Text style={styles.screenTitle}>OWAIS</Text>
 
             <View style={styles.heroCard}>
               <View style={styles.heroAccentOne} />
