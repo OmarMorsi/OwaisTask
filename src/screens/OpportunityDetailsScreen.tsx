@@ -37,14 +37,24 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
           style={styles.backBtn}
           hitSlop={8}
         >
-          <MaterialCommunityIcons name="chevron-left" size={28} color="#000" />
+          <MaterialCommunityIcons
+            name="chevron-left"
+            size={24}
+            color={colors.text}
+          />
         </Pressable>
         <Text style={styles.headerTitle}>Details</Text>
         <View style={styles.headerRight} />
       </View>
+
       <View style={styles.container}>
-        <Text style={styles.name}>{opportunity.name}</Text>
-        <Text style={styles.desc}>{opportunity.description}</Text>
+        <View style={styles.heroCard}>
+          <View style={styles.heroAccentOne} />
+          <View style={styles.heroAccentTwo} />
+          <Text style={styles.name}>{opportunity.name}</Text>
+          <Text style={styles.desc}>{opportunity.description}</Text>
+        </View>
+
         <View style={styles.cardRow}>
           <Text style={styles.label}>Expected return</Text>
           <Text style={styles.value}>{`${opportunity.expectedReturn}%`}</Text>
@@ -61,6 +71,7 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
             {formatCurrencySAR(opportunity.minInvestment)}
           </Text>
         </View>
+
         <Pressable
           disabled={submitting}
           onPress={onInvest}
@@ -72,6 +83,7 @@ export default function OpportunityDetailsScreen({ route, navigation }: Props) {
         >
           <Text style={styles.buttonText}>Invest 1,000 SAR</Text>
         </Pressable>
+
         <Text style={styles.available}>{`Available: ${formatCurrencySAR(
           available
         )}`}</Text>
@@ -89,7 +101,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "transparent",
   },
-  backBtn: { position: "absolute", left: spacing.sm, padding: spacing.xs },
+  backBtn: {
+    position: "absolute",
+    left: spacing.sm,
+    padding: spacing.xs,
+    backgroundColor: "rgba(0,0,0,0.05)",
+    borderRadius: 999,
+  },
   headerTitle: {
     fontSize: typography.title,
     fontWeight: "700",
@@ -97,8 +115,39 @@ const styles = StyleSheet.create({
   },
   headerRight: { position: "absolute", right: spacing.sm, width: 32 },
   container: { flex: 1, padding: spacing.lg, gap: spacing.md },
+  heroCard: {
+    position: "relative",
+    backgroundColor: colors.surface,
+    borderRadius: radii.lg,
+    padding: spacing.lg,
+    ...shadow,
+    overflow: "hidden",
+  },
+  heroAccentOne: {
+    position: "absolute",
+    right: -40,
+    top: -40,
+    width: 150,
+    height: 150,
+    borderRadius: 999,
+    backgroundColor: "rgba(99,102,241,0.12)",
+  },
+  heroAccentTwo: {
+    position: "absolute",
+    left: -48,
+    bottom: -48,
+    width: 170,
+    height: 170,
+    borderRadius: 999,
+    backgroundColor: "rgba(16,185,129,0.10)",
+  },
   name: { fontSize: typography.titleLg, fontWeight: "700", color: colors.text },
-  desc: { fontSize: typography.body, color: colors.textMuted },
+  desc: {
+    fontSize: typography.body,
+    color: colors.textMuted,
+    marginTop: spacing.xs,
+  },
+
   cardRow: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -116,9 +165,10 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md + 2,
     borderRadius: radii.md,
     alignItems: "center",
+    ...shadow,
   },
   buttonDisabled: { backgroundColor: colors.primaryMuted },
-  buttonPressed: { opacity: 0.85 },
+  buttonPressed: { opacity: 0.9, transform: [{ scale: 0.98 }] },
   buttonText: {
     color: "#fff",
     fontSize: typography.bodyStrong,
