@@ -12,18 +12,18 @@ export default function BalanceSummary() {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <View style={styles.card}>
+        <View style={styles.cardCentered}>
           <Text style={styles.label}>Available</Text>
           <Text style={styles.value}>{formatCurrencySAR(available)}</Text>
         </View>
-        <View style={styles.card}>
+        <View style={styles.cardCentered}>
           <Text style={styles.label}>Invested</Text>
           <Text style={styles.value}>{formatCurrencySAR(invested)}</Text>
         </View>
-      </View>
-      <View style={styles.total}>
-        <Text style={styles.totalLabel}>Total</Text>
-        <Text style={styles.totalValue}>{formatCurrencySAR(total)}</Text>
+        <View style={styles.cardCentered}>
+          <Text style={styles.label}>Total</Text>
+          <Text style={styles.totalValue}>{formatCurrencySAR(total)}</Text>
+        </View>
       </View>
     </View>
   );
@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
     gap: 12,
   },
   card: {
@@ -45,28 +47,26 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#f5f5f5",
   },
+  cardCentered: {
+    flex: 1,
+    padding: 16,
+    borderRadius: 12,
+    backgroundColor: "#f5f5f5",
+    alignItems: "center",
+  },
   label: {
     fontSize: 12,
     color: "#666",
   },
   value: {
     marginTop: 6,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "700",
     color: "#000",
   },
-  total: {
-    padding: 16,
-    borderRadius: 12,
-    backgroundColor: "#eaeaea",
-  },
-  totalLabel: {
-    fontSize: 12,
-    color: "#666",
-  },
   totalValue: {
     marginTop: 6,
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "800",
     color: "#000",
   },
