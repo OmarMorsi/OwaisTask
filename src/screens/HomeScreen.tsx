@@ -45,7 +45,7 @@ export default function HomeScreen() {
             }
           />
         )}
-        ItemSeparatorComponent={() => <View style={{ height: spacing.md }} />}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
         refreshControl={
           <RefreshControl
             refreshing={loadingOpportunities}
@@ -60,4 +60,5 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: colors.bg },
   content: { padding: spacing.lg, gap: spacing.md },
+  separator: { height: spacing.md },
 });
